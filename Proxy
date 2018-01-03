@@ -1,0 +1,19 @@
+# Proxy
+# version 0.0.1
+FROM ubuntu
+
+# owner info
+MAINTAINER youzh "youzh@example.com"
+
+
+RUN apt-get update
+RUN apt-get install -yq dante-server wget sudo
+RUN mv /etc/danted.conf /etc/danted.conf.bak
+RUN wget https://raw.githubusercontent.com/dirtyDe/config/master/danted.conf
+RUN mv danted.conf /etc/danted.conf
+
+# 监听端口
+EXPOSE 6666
+
+# 容器运行时执行的命令
+CMD ["sudo /etc/init.d/danted start"]
