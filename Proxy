@@ -3,15 +3,16 @@
 FROM ubuntu
 
 # owner info
-MAINTAINER youzh "youzh@example.com"
+MAINTAINER youzheng "youzheng@example.com"
 
-
+# proxy dante
 RUN apt-get update
 RUN apt-get install -yq dante-server wget sudo
 RUN mv /etc/danted.conf /etc/danted.conf.bak
-RUN wget https://raw.githubusercontent.com/dirtyDe/config/master/danted.conf
+RUN wget https://raw.githubusercontent.com/dirtyDe/Dockerfile/master/src/danted.conf
 RUN mv danted.conf /etc/danted.conf
 
+# vpn
 # 监听端口
 EXPOSE 6666
 

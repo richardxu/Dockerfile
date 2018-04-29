@@ -1,0 +1,10 @@
+FROM ubuntu
+
+RUN apt update & upgrade -yq
+RUN apt install git apache2 mysql-server php7 php7.0-mysql -yq
+RUN service apache2 restart
+RUN service mysql restart
+RUN cd /var/www/html
+RUN git clone https://github.com/Audi-1/sqli-labs.git sqli-labs
+RUN cd ./sqli-labs/sql-connections/ && wget 
+EXPOSE 80
